@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-textBody bg-background font-sans;
+  }
+
+  /* Prose styles for README markdown */
+  .prose h1,
+  .prose h2,
+  .prose h3,
+  .prose h4 {
+    @apply text-textPrimary font-bold;
+  }
+  .prose h1 { @apply text-2xl mt-8 mb-4; }
+  .prose h2 { @apply text-xl mt-6 mb-3 pb-2 border-b border-border; }
+  .prose h3 { @apply text-lg mt-5 mb-2; }
+  .prose p { @apply text-textBody leading-relaxed mb-4; }
+  .prose a { @apply text-accent hover:underline; }
+  .prose code { @apply font-mono text-sm bg-accentLight text-accent px-1.5 py-0.5 rounded; }
+  .prose pre { @apply bg-navy text-white rounded-card p-4 overflow-x-auto mb-4; }
+  .prose pre code { @apply bg-transparent text-white p-0; }
+  .prose ul { @apply list-disc pl-5 mb-4 space-y-1; }
+  .prose ol { @apply list-decimal pl-5 mb-4 space-y-1; }
+  .prose li { @apply text-textBody; }
+  .prose blockquote { @apply border-l-4 border-accent pl-4 italic text-textMuted my-4; }
+  .prose table { @apply w-full border-collapse mb-4; }
+  .prose th { @apply bg-sectionAlt text-textPrimary font-semibold text-sm px-3 py-2 text-left border border-border; }
+  .prose td { @apply text-textBody text-sm px-3 py-2 border border-border; }
+  .prose img { @apply rounded-card max-w-full; }
+  .prose hr { @apply border-border my-6; }
+}
