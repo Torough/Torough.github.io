@@ -27,6 +27,4 @@ export const education: EducationEntry[] = [
 
 export const certifications: Certification[] = [
   { name: "AWS Cloud Practitioner", status: "In View" },
-  { name: "AWS Solutions Architect Associate" },
-  { name: "AWS Data Engineer" },
 ];

@@ -8,10 +8,22 @@ export interface Role {
 
 export const experience: Role[] = [
   {
+    id: "nhs-analytical-engineer",
+    title: "Analytical Engineer",
+    company: "NHS England (formerly NHS Digital)",
+    period: "November 2025 – Present",
+    bullets: [
+      "Architect and maintain high-performance data pipelines within the NHS Federated Data Platform (Palantir Foundry), using PySpark and SQL to transform and aggregate millions of records across national, regional, and trust-level datasets.",
+      "Engineer executive-level intelligence for the C-Suite and senior government officials, ensuring high-integrity data models are available for national strategic decision-making and high-priority briefings.",
+      "Lead the implementation of Reproducible Analytical Pipelines (RAP) by transitioning team workflows into Foundry Code Repositories, ensuring reporting is automated, version-controlled, and meets national standards for transparency.",
+      "Develop scalable transformation logic to harmonise complex downstream data from multiple healthcare domains, enabling stakeholders to drill down from national trends to granular trust-level performance.",
+    ],
+  },
+  {
     id: "nhs-higher",
     title: "Higher Information Analyst",
     company: "NHS England",
-    period: "August 2022 – Present",
+    period: "August 2022 – October 2025",
     bullets: [
       "Collaborate with internal and external stakeholders to deliver key NHS publications on a monthly, quarterly, and annual basis.",
       "Lead the migration of data processing workflows from SAS to Python using reproducible analytical pipelines (RAP) with Python and Git, enhancing automation, transparency, and reproducibility.",
@@ -31,15 +43,23 @@ export const experience: Role[] = [
     ],
   },
   {
-    id: "polaris",
+    id: "polaris-ds",
     title: "Data Scientist",
     company: "Polaris Bank",
-    period: "July 2021 – January 2022",
+    period: "September 2021 – January 2022",
     bullets: [
-      "Partnered with Business Analysts to design and implement data science solutions from ideation through deployment, including NLP chatbot development and credit risk modeling for nanoloans.",
-      "Actively contributed to the innovation team by researching cutting-edge techniques and fostering cross-functional collaboration to integrate advanced analytics into business operations.",
-      "Managed and optimised SSIS ETL pipelines and OLAP databases to maintain high data quality.",
-      "Delivered actionable insights through complex SQL queries, analytical reports, and interactive dashboards.",
+      "Liaised with Business Analysts to design and implement data science solutions from ideation through deployment, including an NLP chatbot and credit risk modelling for nanoloans.",
+      "Contributed to the innovation team by researching emerging best practices and championing new ideas and technologies, facilitating cross-functional collaboration to implement cutting-edge solutions that drove business growth and operational efficiency.",
+    ],
+  },
+  {
+    id: "polaris-da",
+    title: "Data Analyst",
+    company: "Polaris Bank",
+    period: "June 2021 – August 2021",
+    bullets: [
+      "Managed and maintained SSIS data pipelines and the OLAP database for the analytics team, monitoring data quality, resolving issues, and optimising processes to enhance efficiency.",
+      "Fulfilled SQL data requests from stakeholders across the institution and created insightful reports and dashboards to present findings.",
     ],
   },
   {
