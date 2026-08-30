@@ -10,7 +10,7 @@ export const experience: Role[] = [
   {
     id: "nhs-analytical-engineer",
     title: "Analytical Engineer",
-    company: "NHS England (formerly NHS Digital)",
+    company: "NHS England",
     period: "November 2025 – Present",
     bullets: [
       "Architect and maintain high-performance data pipelines within the NHS Federated Data Platform (Palantir Foundry), using PySpark and SQL to transform and aggregate millions of records across national, regional, and trust-level datasets.",
