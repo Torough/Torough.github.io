@@ -33,7 +33,7 @@ function timeAgo(dateStr: string) {
 }
 
 export default function ProjectCard({ repo, index }: ProjectCardProps) {
-  const langColor = repo.language ? LANG_COLORS[repo.language] ?? "#64748B" : "#64748B";
+  const langColor = repo.language ? LANG_COLORS[repo.language] ?? "#8A8478" : "#8A8478";
 
   return (
     <motion.a
@@ -42,8 +42,9 @@ export default function ProjectCard({ repo, index }: ProjectCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: (index % 6) * 0.07 }}
-      whileHover={{ y: -2, boxShadow: "0 8px 24px rgba(0,0,0,0.1)" }}
-      className="block bg-white border border-border rounded-card p-5 shadow-card group"
+      whileHover={{ y: -2 }}
+      whileTap={{ scale: 0.98 }}
+      className="block bg-surface border border-border hover:border-accentDim hover:shadow-glow transition-[border-color,box-shadow] p-5 group"
     >
       <div className="flex items-start justify-between gap-2 mb-3">
         <h3 className="font-semibold text-textPrimary text-sm group-hover:text-accent transition-colors font-mono truncate">
@@ -61,7 +62,7 @@ export default function ProjectCard({ repo, index }: ProjectCardProps) {
           {repo.topics.slice(0, 3).map((t) => (
             <span
               key={t}
-              className="text-accent text-small font-mono bg-accentLight px-2 py-0.5 rounded-badge"
+              className="text-accent text-micro font-mono border border-accent/30 px-2 py-0.5 rounded-badge"
             >
               {t}
             </span>
@@ -69,11 +70,11 @@ export default function ProjectCard({ repo, index }: ProjectCardProps) {
         </div>
       )}
 
-      <div className="flex items-center gap-4 text-textMuted text-small">
+      <div className="flex items-center gap-4 text-textMuted text-small font-mono">
         {repo.language && (
           <span className="flex items-center gap-1.5">
             <span
-              className="w-2.5 h-2.5 rounded-full"
+              className="w-2 h-2 rounded-full"
               style={{ backgroundColor: langColor }}
             />
             {repo.language}

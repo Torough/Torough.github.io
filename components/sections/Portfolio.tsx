@@ -7,15 +7,16 @@ export default async function Portfolio() {
   const repos = await fetchGithubRepos();
 
   return (
-    <section id="portfolio" className="bg-sectionAlt py-24">
-      <div className="max-w-[1280px] mx-auto px-6">
+    <section id="portfolio" className="bg-sectionAlt py-24 border-t border-border">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10">
         <SectionHeading
+          index={5}
           title="Projects"
           subtitle="Open-source work and personal projects — fetched live from GitHub."
         />
 
         {repos.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-16 text-textMuted gap-3 border border-border rounded-card bg-white">
+          <div className="flex flex-col items-center justify-center py-16 text-textMuted gap-3 border border-border bg-surface">
             <Github size={32} className="opacity-40" />
             <p className="text-sm">Unable to load projects right now. Check back soon.</p>
             <a

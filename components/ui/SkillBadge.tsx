@@ -4,7 +4,7 @@ interface SkillBadgeProps {
 
 export default function SkillBadge({ label }: SkillBadgeProps) {
   return (
-    <span className="inline-block px-3 py-1 bg-accentLight text-accent text-small font-mono font-medium rounded-badge border border-accent/10">
+    <span className="inline-block px-2.5 py-1 border border-border text-textBody text-small font-mono rounded-badge hover:border-accent hover:text-accent transition-colors">
       {label}
     </span>
   );

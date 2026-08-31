@@ -5,10 +5,31 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    color-scheme: dark;
   }
 
   body {
     @apply text-textBody bg-background font-sans;
+  }
+
+  ::selection {
+    @apply bg-accent text-background;
+  }
+
+  :focus-visible {
+    outline: 1.5px solid theme("colors.accent");
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 
   /* Prose styles for README markdown */
@@ -23,16 +44,23 @@
   .prose h3 { @apply text-lg mt-5 mb-2; }
   .prose p { @apply text-textBody leading-relaxed mb-4; }
   .prose a { @apply text-accent hover:underline; }
-  .prose code { @apply font-mono text-sm bg-accentLight text-accent px-1.5 py-0.5 rounded; }
-  .prose pre { @apply bg-navy text-white rounded-card p-4 overflow-x-auto mb-4; }
-  .prose pre code { @apply bg-transparent text-white p-0; }
+  .prose code { @apply font-mono text-sm bg-accentSoft text-accent px-1.5 py-0.5 rounded-badge; }
+  .prose pre { @apply bg-sectionAlt border border-border text-textBody rounded-card p-4 overflow-x-auto mb-4; }
+  .prose pre code { @apply bg-transparent text-textBody p-0; }
   .prose ul { @apply list-disc pl-5 mb-4 space-y-1; }
   .prose ol { @apply list-decimal pl-5 mb-4 space-y-1; }
   .prose li { @apply text-textBody; }
-  .prose blockquote { @apply border-l-4 border-accent pl-4 italic text-textMuted my-4; }
+  .prose blockquote { @apply border-l-2 border-accent pl-4 italic text-textMuted my-4; }
   .prose table { @apply w-full border-collapse mb-4; }
   .prose th { @apply bg-sectionAlt text-textPrimary font-semibold text-sm px-3 py-2 text-left border border-border; }
   .prose td { @apply text-textBody text-sm px-3 py-2 border border-border; }
   .prose img { @apply rounded-card max-w-full; }
   .prose hr { @apply border-border my-6; }
+}
+
+@layer components {
+  /* Schematic index label: "§ 01" style section markers */
+  .sheet-index {
+    @apply font-mono text-micro uppercase tracking-widest text-accent;
+  }
 }

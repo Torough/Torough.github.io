@@ -1,19 +1,20 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Archivo, Fragment_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 
-const inter = Inter({
+const archivo = Archivo({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-archivo",
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const fragmentMono = Fragment_Mono({
   subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
+  weight: "400",
+  variable: "--font-fragment-mono",
   display: "swap",
 });
 
@@ -88,14 +89,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${archivo.variable} ${fragmentMono.variable}`}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body>
+      <body className="bg-background">
         <GoogleAnalytics />
         <Navbar />
         {children}

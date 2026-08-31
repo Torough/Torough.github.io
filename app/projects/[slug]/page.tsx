@@ -41,21 +41,21 @@ export default async function ProjectPage({ params }: PageProps) {
 
   return (
     <main className="min-h-screen bg-background pt-20">
-      <div className="max-w-[1280px] mx-auto px-6 py-12">
+      <div className="max-w-[1024px] mx-auto px-6 py-12">
         {/* Back */}
         <Link
           href="/#portfolio"
-          className="inline-flex items-center gap-2 text-textMuted hover:text-accent transition-colors text-sm mb-8"
+          className="inline-flex items-center gap-2 text-textMuted hover:text-accent transition-colors font-mono text-small mb-8"
         >
           <ArrowLeft size={15} />
           Back to Portfolio
         </Link>
 
         {/* Header */}
-        <div className="border border-border rounded-card bg-white shadow-card p-8 mb-8">
+        <div className="border border-border bg-surface p-8 mb-8">
           <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
             <div>
-              <h1 className="text-h2 font-bold text-textPrimary font-mono">{repo.name}</h1>
+              <h1 className="text-h2 text-textPrimary font-mono">{repo.name}</h1>
               {repo.description && (
                 <p className="text-textBody mt-2 max-w-2xl">{repo.description}</p>
               )}
@@ -64,16 +64,16 @@ export default async function ProjectPage({ params }: PageProps) {
               href={repo.html_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 bg-accent text-white text-sm font-medium rounded-card hover:bg-accentHover transition-colors shrink-0"
+              className="flex items-center gap-2 px-4 py-2 bg-accent text-background font-mono text-small uppercase tracking-wide font-medium rounded-badge hover:bg-accentHover transition-colors shrink-0"
             >
               <ExternalLink size={14} />
               View on GitHub
             </a>
           </div>
 
-          <div className="flex flex-wrap items-center gap-5 mt-6 text-textMuted text-small">
+          <div className="flex flex-wrap items-center gap-5 mt-6 text-textMuted font-mono text-small">
             {repo.language && (
-              <span className="inline-block px-2.5 py-1 bg-accentLight text-accent font-mono font-medium rounded-badge border border-accent/10">
+              <span className="inline-block px-2.5 py-1 text-accent font-mono font-medium rounded-badge border border-accent/30">
                 {repo.language}
               </span>
             )}
@@ -96,7 +96,7 @@ export default async function ProjectPage({ params }: PageProps) {
               {repo.topics.map((t) => (
                 <span
                   key={t}
-                  className="text-accent text-small font-mono bg-accentLight px-2 py-0.5 rounded-badge"
+                  className="text-accent text-micro font-mono border border-accent/30 px-2 py-0.5 rounded-badge"
                 >
                   {t}
                 </span>
@@ -107,11 +107,11 @@ export default async function ProjectPage({ params }: PageProps) {
 
         {/* README */}
         {readme ? (
-          <div className="border border-border rounded-card bg-white shadow-card p-8">
+          <div className="border border-border bg-surface p-8">
             <h2 className="text-h4 font-semibold text-textPrimary mb-6 pb-4 border-b border-border">
               README
             </h2>
-            <div className="prose prose-slate max-w-none">
+            <div className="prose max-w-none">
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeHighlight]}
@@ -121,7 +121,7 @@ export default async function ProjectPage({ params }: PageProps) {
             </div>
           </div>
         ) : (
-          <div className="border border-border rounded-card bg-white shadow-card p-8 text-center text-textMuted">
+          <div className="border border-border bg-surface p-8 text-center text-textMuted">
             <p className="text-sm">No README available for this repository.</p>
           </div>
         )}

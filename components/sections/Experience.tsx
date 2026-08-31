@@ -7,8 +7,8 @@ import { experience } from "@/lib/data/experience";
 
 export default function Experience() {
   return (
-    <section id="experience" className="bg-background py-24">
-      <div className="max-w-[1280px] mx-auto px-6">
+    <section id="experience" className="bg-background py-24 border-t border-border">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -16,6 +16,7 @@ export default function Experience() {
           transition={{ duration: 0.5 }}
         >
           <SectionHeading
+            index={2}
             title="Work Experience"
             subtitle="A track record of delivering data-driven solutions across healthcare, fintech, and humanitarian sectors."
           />

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const NAV_LINKS = [
@@ -41,8 +42,8 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-border">
-      <div className="max-w-[1280px] mx-auto px-6 h-16 flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur border-b border-border">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
         {/* Logo */}
         <a
           href="#"
@@ -50,34 +51,41 @@ export default function Navbar() {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
-          className="font-sans font-bold text-navy text-lg tracking-tight hover:text-accent transition-colors"
+          className="font-sans font-bold text-textPrimary text-base tracking-tight hover:text-accent transition-colors flex items-center gap-1.5"
         >
+          <span className="font-mono text-accent">$</span>
           Gabriel Chichi
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-1">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick(link.href);
-              }}
-              className={`px-3 py-1.5 rounded text-sm font-medium transition-colors ${
-                activeSection === link.href.slice(1)
-                  ? "text-accent"
-                  : "text-textBody hover:text-accent"
-              }`}
-            >
-              {link.label}
-            </a>
-          ))}
+        <nav className="hidden md:flex items-center gap-7">
+          {NAV_LINKS.map((link) => {
+            const isActive = activeSection === link.href.slice(1);
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick(link.href);
+                }}
+                className={`relative py-1.5 font-mono text-micro uppercase tracking-widest transition-colors ${
+                  isActive ? "text-accent" : "text-textMuted hover:text-textPrimary"
+                }`}
+              >
+                {link.label}
+                <span
+                  className={`absolute left-0 -bottom-[1px] h-px bg-accent transition-all ${
+                    isActive ? "w-full" : "w-0"
+                  }`}
+                />
+              </a>
+            );
+          })}
           <a
             href="/Gabriel_Chichi_CV.pdf"
             download
-            className="ml-3 px-4 py-1.5 rounded bg-accent text-white text-sm font-medium hover:bg-accentHover transition-colors"
+            className="px-4 py-1.5 bg-accent text-background rounded-badge font-mono text-micro uppercase tracking-widest font-medium hover:bg-accentHover active:scale-[0.97] transition"
           >
             Download CV
           </a>
@@ -94,30 +102,38 @@ export default function Navbar() {
       </div>
 
       {/* Mobile menu */}
-      {menuOpen && (
-        <div className="md:hidden bg-white border-t border-border px-6 pb-4">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick(link.href);
-              }}
-              className="block py-2.5 text-sm font-medium text-textBody hover:text-accent transition-colors"
-            >
-              {link.label}
-            </a>
-          ))}
-          <a
-            href="/Gabriel_Chichi_CV.pdf"
-            download
-            className="block mt-2 py-2.5 text-sm font-medium text-accent"
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
+            className="md:hidden bg-background border-t border-border px-6 pb-4"
           >
-            Download CV
-          </a>
-        </div>
-      )}
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick(link.href);
+                }}
+                className="block py-2.5 font-mono text-small uppercase tracking-widest text-textMuted hover:text-accent active:scale-[0.97] transition"
+              >
+                {link.label}
+              </a>
+            ))}
+            <a
+              href="/Gabriel_Chichi_CV.pdf"
+              download
+              className="block mt-2 py-2.5 font-mono text-small uppercase tracking-widest text-accent active:scale-[0.97] transition-transform"
+            >
+              Download CV
+            </a>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
